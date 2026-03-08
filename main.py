@@ -1,4 +1,5 @@
 import flet as ft
+from database.db import create_tables
 
 def main(page: ft.Page):
     page.title = "Sistema de Asistencia QR"
@@ -7,4 +8,7 @@ def main(page: ft.Page):
         ft.Text("Sistema de asistencia QR funcionando")
     )
 
-ft.app(target=main, view=ft.WEB_BROWSER)
+# Crear tablas al iniciar la app
+create_tables()
+
+ft.app(target=main)
