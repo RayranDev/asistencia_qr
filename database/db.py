@@ -29,3 +29,15 @@ def create_tables():
 
     conn.commit()
     conn.close()
+
+def create_user(nombre, email, password, rol):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    INSERT INTO usuarios (nombre, email, password, rol)
+    VALUES (?, ?, ?, ?)
+    """, (nombre, email, password, rol))
+
+    conn.commit()
+    conn.close()
