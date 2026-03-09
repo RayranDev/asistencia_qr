@@ -4,7 +4,6 @@ import os
 # Ruta de la base de datos
 DB_PATH = os.path.join(os.path.dirname(__file__), "asistencia.db")
 
-
 def get_connection():
     """
     Crea y retorna una conexión a la base de datos

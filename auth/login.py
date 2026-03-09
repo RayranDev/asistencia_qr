@@ -2,6 +2,7 @@ import flet as ft
 
 from database.db import get_user_by_email
 from auth.security import verify_password
+from ui.dashboard import dashboard_view
 
 
 def login_view(page: ft.Page):
@@ -26,8 +27,10 @@ def login_view(page: ft.Page):
             page.update()
             return
 
-        message.value = f"Bienvenido {user['nombre']} ({user['rol']})"
-        page.update()
+        page.clean()
+        page.add(
+            dashboard_view(page, user)
+        )
 
     return ft.Column(
         [
