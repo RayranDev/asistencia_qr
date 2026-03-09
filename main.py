@@ -1,28 +1,21 @@
 import flet as ft
-from database.db import create_tables, create_user
-from auth.security import hash_password
+
+from database.db import create_tables
+from auth.login import login_view
+
 
 def main(page: ft.Page):
+
     page.title = "Sistema de Asistencia QR"
 
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+
     page.add(
-        ft.Text("Sistema de asistencia QR funcionando")
+        login_view(page)
     )
 
-# Crear tablas al iniciar la app
+
 create_tables()
-
-# Crear admin inicial
-admin_password = hash_password("admin123")
-
-try:
-    create_user(
-        "Administrador",
-        "admin@admin.com",
-        admin_password,
-        "admin"
-    )
-except:
-    pass
 
 ft.app(target=main)
